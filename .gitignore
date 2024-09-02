@@ -1,0 +1,11 @@
+cropped_imgs
+cropped_imgs_*
+valis_process
+*.jpg
+*.png
+.ipynb_checkpoints
+*.pyc
+**/__pycache__/
+**/*.pyc
+**/**/.ipynb_checkpoints
+cropped.tar.gz

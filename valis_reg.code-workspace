@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../keerthi_data/BFIW_original"
+		},
+		{
+			"path": "../keerthi_data/BFIW_processed"
+		}
+	],
+	"settings": {}
+}
