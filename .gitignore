@@ -9,3 +9,7 @@ valis_process
 **/*.pyc
 **/**/.ipynb_checkpoints
 cropped.tar.gz
+BFIW_original
+block_new.tar.gz
+block.tar.gz
+cufile.log
