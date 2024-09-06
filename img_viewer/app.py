@@ -20,7 +20,9 @@ def index():
     files = sorted(files)
     # chunk the files into 3 columns
     files = [files[i:i + 3] for i in range(0, len(files), 3)]
-    selected_files = session.get('selected_files', [])
+    with open('log.txt', 'r') as f:
+        aselected_files = f.read().splitlines()
+    selected_files = session.get('selected_files', aselected_files)
     return render_template('index.html', files=files, path=path,selected_files=selected_files)
 
 @app.route('/discard', methods=['GET', 'POST'])
@@ -30,7 +32,7 @@ def discard():
     selected_files = request.form.getlist('discard')
     # Store the selected files in the session
     session['selected_files'] = selected_files
-    with open('log.txt', 'w') as f:
+    with open('log.txt', 'a') as f:
         for file in selected_files:
             f.write(file + '\n')
     # chunk the files into 3 columns
