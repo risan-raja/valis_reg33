@@ -16,3 +16,5 @@ cufile.log
 wandb
 train_block_out.tar.gz
 rf_model.tl
+train_block.tar.gz
+flask_session
