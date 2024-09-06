@@ -14,3 +14,5 @@ block_new.tar.gz
 block.tar.gz
 cufile.log
 wandb
+train_block_out.tar.gz
+rf_model.tl
