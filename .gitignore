@@ -18,3 +18,7 @@ train_block_out.tar.gz
 rf_model.tl
 train_block.tar.gz
 flask_session
+bfiw_reg/pixel_classifier.pkl
+213_BFIW
+pixel_classifier.pkl
+rf_trained.tar.gz

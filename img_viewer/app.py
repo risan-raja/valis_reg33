@@ -25,6 +25,10 @@ def index():
     selected_files = session.get('selected_files', aselected_files)
     return render_template('index.html', files=files, path=path,selected_files=selected_files)
 
+@app.route('/keep', methods=['GET', 'POST'])
+def prediction_viewer():
+    pass
+
 @app.route('/discard', methods=['GET', 'POST'])
 def discard():
     path = sys.argv[1]
