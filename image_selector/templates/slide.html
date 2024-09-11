@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block title %}Select Images for {{ slide }}{% endblock %}
+
+{% block content %}
+<h1>Select Images for Slide: {{ slide }}</h1>
+<div class="container">
+    <form action="/select_images" method="POST">
+        <div class="row">
+            <h3>Main Images</h3>
+            {% for image in main_images %}
+            <div class="col-md-4 text-center mb-4"  onclick="toggleCheckbox(event, '{{ image }}')">
+                <div class="card"  onclick="toggleCheckbox(event, '{{ image }}')">
+                    <img src="{{ url_for('get_slide_stain_image', slide=slide, image_name=image, resolution=500) }}"
+                        alt="{{ image }}" class="img-fluid p-2" width="500px" height="auto"
+                        onclick="toggleCheckbox(event, '{{ image }}')"><br>
+                    <!-- <input type="checkbox" name="selected_images" value="{{ image }}"> -->
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" value="{{ image }}"
+                            name="selected_images" id="flexSwitchCheckDefault{{ image }}" {% if image in selected_files
+                            %}checked{% endif %}>
+                        <!-- <label class="form-check-label" for="flexSwitchCheckDefault{{ image }}">{{ image | replace(".jpg", "")}}</label> -->
+                    </div>
+                    <label>{{ image }}</label>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    
+        <div class="row">
+            <h4>Stain Images</h4>
+            {% for image in stain_images %}
+            <div class="col-md-3 text-center mb-3"  onclick="toggleCheckbox(event, '{{ image }}')">
+                <div class="card"  onclick="toggleCheckbox(event, '{{ image }}')">
+                    <img src="{{ url_for('get_slide_stain_image', slide=slide, image_name=image, resolution=300) }}"
+                        alt="{{ image }}" class="img-fluid p-2" width="500px" height="auto"
+                        onclick="toggleCheckbox(event, '{{ image }}')"><br>
+                    <!-- <input type="checkbox" name="selected_images" value="{{ image }}"> -->
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" role="switch" value="{{ image }}"
+                            name="selected_images" id="flexSwitchCheckDefault{{ image }}" {% if image in selected_files
+                            %}checked{% endif %}>
+                        <!-- <label class="form-check-label" for="flexSwitchCheckDefault{{ image }}">{{ image | replace(".jpg", "")}}</label> -->
+                    </div>
+                    <label>{{ image }}</label>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <br>
+        <!-- <button type="submit" class="btn btn-primary"></button> -->
+        <button class="btn btn-primary floating-button" type="submit">Submit Selected Images</button>
+        <a href="{{ url_for('index') }}" class="btn btn-secondary">Return to Home</a>
+    </form>
+</div>
+
+<script>
+    function toggleCheckbox(event, file) {
+        // Prevent the form from submitting when clicking on the card
+        event.preventDefault();
+        // Find the checkbox using the file name
+        const checkbox = document.getElementById('flexSwitchCheckDefault' + file);
+        // Toggle the checkbox state
+        checkbox.checked = !checkbox.checked;
+    }
+</script>
+{% endblock %}
