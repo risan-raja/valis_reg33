@@ -1,7 +1,8 @@
 from .slide import BFIWSlide
 import numpy as np
 import cv2
-import matplotlib.pyplot as plt
+import scipy.ndimage as ndi
+
 
 def make_slide(slide_path, key=None, is_ref=False):
     slide = BFIWSlide(slide_path, key, is_ref)
@@ -70,3 +71,9 @@ def predict_mask(slide: BFIWSlide, fil_model):
     final_mask = post_process_mask(predicted_mask)
     return final_mask, predicted_mask
 
+def process_rf_mask(mask):
+    mask = mask.astype(np.uint8)
+    mask = ndi.binary_fill_holes(mask)
+    mask = cv2.morphologyEx(mask.astype(np.uint8), cv2.MORPH_OPEN, np.ones((3,3), np.uint8), iterations=5) # type: ignore
+    mask = cv2.morphologyEx(mask, cv2.MORPH_CLOSE, np.ones((3,3), np.uint8), iterations=5)
+    return mask
