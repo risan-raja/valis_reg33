@@ -17,8 +17,7 @@
                     <!-- <input type="checkbox" name="selected_images" value="{{ image }}"> -->
                     <div class="form-check form-switch">
                         <input class="form-check-input" type="checkbox" role="switch" value="{{ image }}"
-                            name="selected_images" id="flexSwitchCheckDefault{{ image }}" {% if image in selected_files
-                            %}checked{% endif %}>
+                            name="selected_images" id="flexSwitchCheckDefault{{ image }}" checked>
                         <label class="form-check-label" for="flexSwitchCheckDefault{{ image }}">{{ image | replace(".jpg", "")}}</label>
                     </div>
                 </div>
