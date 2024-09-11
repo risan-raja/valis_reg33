@@ -1,14 +1,16 @@
 {
 	"folders": [
 		{
-			"path": "."
+			"path": ".."
 		},
 		{
-			"path": "../keerthi_data/BFIW_original"
-		},
-		{
-			"path": "../keerthi_data/BFIW_processed"
+			"path": "../../bfiw_app"
 		}
 	],
-	"settings": {}
+	"settings": {
+		"python.analysis.autoFormatStrings": true,
+		"python.analysis.autoImportCompletions": true,
+		"python.analysis.completeFunctionParens": true,
+		"python.analysis.inlayHints.functionReturnTypes": true
+	}
 }
