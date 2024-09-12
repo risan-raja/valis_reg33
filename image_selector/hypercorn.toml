@@ -1,0 +1,4 @@
+bind = "0.0.0.0:8877"
+workers = 8
+use_reloader = true
+worker_class = "uvloop"

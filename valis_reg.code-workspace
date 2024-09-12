@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		},
+		{
+			"path": "../../bfiw_app"
+		}
+	],
+	"settings": {
+		"python.analysis.autoFormatStrings": true,
+		"python.analysis.autoImportCompletions": true,
+		"python.analysis.completeFunctionParens": true,
+		"python.analysis.inlayHints.functionReturnTypes": true
+	}
+}
