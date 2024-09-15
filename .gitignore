@@ -29,3 +29,5 @@ nohup.out
 ._gray_corrected.tif
 valis_process_s/BFIW_processed/._.DS_Store
 valis_process_s/BFIW_processed/.DS_Store
+valis_lib
+cv_backup
