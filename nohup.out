@@ -492,3 +492,115 @@ Traceback (most recent call last):
   File "/storage/valis_reg/image_selector/app.py", line 76, in save_selected_images
     for slide, data in app.selected_slide_images.items():
 RuntimeError: dictionary changed size during iteration
+[2024-09-13 09:41:31 +0000] [19609] [ERROR] Error in ASGI Framework
+Traceback (most recent call last):
+  File "/usr/local/src/.venv/lib/python3.12/site-packages/hypercorn/asyncio/task_group.py", line 27, in _handle
+    await app(scope, receive, send, sync_spawn, call_soon)
+  File "/usr/local/src/.venv/lib/python3.12/site-packages/hypercorn/app_wrappers.py", line 34, in __call__
+    await self.app(scope, receive, send)
+  File "/usr/local/src/.venv/lib/python3.12/site-packages/quart/app.py", line 1667, in __call__
+    await self.asgi_app(scope, receive, send)
+  File "/usr/local/src/.venv/lib/python3.12/site-packages/quart/app.py", line 1693, in asgi_app
+    await asgi_handler(receive, send)
+  File "/usr/local/src/.venv/lib/python3.12/site-packages/quart/asgi.py", line 52, in __call__
+    raise_task_exceptions(done)
+  File "/usr/local/src/.venv/lib/python3.12/site-packages/quart/utils.py", line 180, in raise_task_exceptions
+    raise task.exception()
+  File "/usr/local/src/.venv/lib/python3.12/site-packages/quart/asgi.py", line 100, in handle_request
+    response = await _handle_exception(self.app, error)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/src/.venv/lib/python3.12/site-packages/quart/asgi.py", line 357, in _handle_exception
+    raise error
+  File "/usr/local/src/.venv/lib/python3.12/site-packages/quart/asgi.py", line 98, in handle_request
+    response = await self.app.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/src/.venv/lib/python3.12/site-packages/quart/app.py", line 1401, in handle_request
+    async with self.request_context(request) as request_context:
+  File "/usr/local/src/.venv/lib/python3.12/site-packages/quart/ctx.py", line 88, in __aexit__
+    await self.auto_pop(exc_value)
+  File "/usr/local/src/.venv/lib/python3.12/site-packages/quart/ctx.py", line 81, in auto_pop
+    await self.pop(exc)
+  File "/usr/local/src/.venv/lib/python3.12/site-packages/quart/ctx.py", line 149, in pop
+    await self.app.do_teardown_request(exc, self)
+  File "/usr/local/src/.venv/lib/python3.12/site-packages/quart/app.py", line 1164, in do_teardown_request
+    await self.ensure_async(function)(exc)
+  File "/storage/valis_reg/image_selector/app.py", line 317, in teardown_request
+    session["current_slide"] = current_slide_index + 1
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/storage/valis_reg/image_selector/app.py", line 76, in save_selected_images
+    for slide, data in app.selected_slide_images.items():
+RuntimeError: dictionary changed size during iteration
+[2024-09-13 10:19:12 +0000] [39667] [ERROR] Error in ASGI Framework
+Traceback (most recent call last):
+  File "/usr/local/src/.venv/lib/python3.12/site-packages/hypercorn/asyncio/task_group.py", line 27, in _handle
+    await app(scope, receive, send, sync_spawn, call_soon)
+  File "/usr/local/src/.venv/lib/python3.12/site-packages/hypercorn/app_wrappers.py", line 34, in __call__
+    await self.app(scope, receive, send)
+  File "/usr/local/src/.venv/lib/python3.12/site-packages/quart/app.py", line 1667, in __call__
+    await self.asgi_app(scope, receive, send)
+  File "/usr/local/src/.venv/lib/python3.12/site-packages/quart/app.py", line 1693, in asgi_app
+    await asgi_handler(receive, send)
+  File "/usr/local/src/.venv/lib/python3.12/site-packages/quart/asgi.py", line 52, in __call__
+    raise_task_exceptions(done)
+  File "/usr/local/src/.venv/lib/python3.12/site-packages/quart/utils.py", line 180, in raise_task_exceptions
+    raise task.exception()
+  File "/usr/local/src/.venv/lib/python3.12/site-packages/quart/asgi.py", line 100, in handle_request
+    response = await _handle_exception(self.app, error)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/src/.venv/lib/python3.12/site-packages/quart/asgi.py", line 357, in _handle_exception
+    raise error
+  File "/usr/local/src/.venv/lib/python3.12/site-packages/quart/asgi.py", line 98, in handle_request
+    response = await self.app.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/src/.venv/lib/python3.12/site-packages/quart/app.py", line 1401, in handle_request
+    async with self.request_context(request) as request_context:
+  File "/usr/local/src/.venv/lib/python3.12/site-packages/quart/ctx.py", line 88, in __aexit__
+    await self.auto_pop(exc_value)
+  File "/usr/local/src/.venv/lib/python3.12/site-packages/quart/ctx.py", line 81, in auto_pop
+    await self.pop(exc)
+  File "/usr/local/src/.venv/lib/python3.12/site-packages/quart/ctx.py", line 149, in pop
+    await self.app.do_teardown_request(exc, self)
+  File "/usr/local/src/.venv/lib/python3.12/site-packages/quart/app.py", line 1164, in do_teardown_request
+    await self.ensure_async(function)(exc)
+  File "/storage/valis_reg/image_selector/app.py", line 327, in teardown_request
+    await save_selected_images()
+  File "/storage/valis_reg/image_selector/app.py", line 76, in save_selected_images
+    for slide, data in app.selected_slide_images.items():
+RuntimeError: dictionary changed size during iteration
+[2024-09-13 17:42:55 +0000] [39671] [ERROR] Error in ASGI Framework
+Traceback (most recent call last):
+  File "/usr/local/src/.venv/lib/python3.12/site-packages/hypercorn/asyncio/task_group.py", line 27, in _handle
+    await app(scope, receive, send, sync_spawn, call_soon)
+  File "/usr/local/src/.venv/lib/python3.12/site-packages/hypercorn/app_wrappers.py", line 34, in __call__
+    await self.app(scope, receive, send)
+  File "/usr/local/src/.venv/lib/python3.12/site-packages/quart/app.py", line 1667, in __call__
+    await self.asgi_app(scope, receive, send)
+  File "/usr/local/src/.venv/lib/python3.12/site-packages/quart/app.py", line 1693, in asgi_app
+    await asgi_handler(receive, send)
+  File "/usr/local/src/.venv/lib/python3.12/site-packages/quart/asgi.py", line 52, in __call__
+    raise_task_exceptions(done)
+  File "/usr/local/src/.venv/lib/python3.12/site-packages/quart/utils.py", line 180, in raise_task_exceptions
+    raise task.exception()
+  File "/usr/local/src/.venv/lib/python3.12/site-packages/quart/asgi.py", line 100, in handle_request
+    response = await _handle_exception(self.app, error)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/src/.venv/lib/python3.12/site-packages/quart/asgi.py", line 357, in _handle_exception
+    raise error
+  File "/usr/local/src/.venv/lib/python3.12/site-packages/quart/asgi.py", line 98, in handle_request
+    response = await self.app.handle_request(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/src/.venv/lib/python3.12/site-packages/quart/app.py", line 1401, in handle_request
+    async with self.request_context(request) as request_context:
+  File "/usr/local/src/.venv/lib/python3.12/site-packages/quart/ctx.py", line 88, in __aexit__
+    await self.auto_pop(exc_value)
+  File "/usr/local/src/.venv/lib/python3.12/site-packages/quart/ctx.py", line 81, in auto_pop
+    await self.pop(exc)
+  File "/usr/local/src/.venv/lib/python3.12/site-packages/quart/ctx.py", line 149, in pop
+    await self.app.do_teardown_request(exc, self)
+  File "/usr/local/src/.venv/lib/python3.12/site-packages/quart/app.py", line 1164, in do_teardown_request
+    await self.ensure_async(function)(exc)
+  File "/storage/valis_reg/image_selector/app.py", line 327, in teardown_request
+    await save_selected_images()
+  File "/storage/valis_reg/image_selector/app.py", line 76, in save_selected_images
+    for slide, data in app.selected_slide_images.items():
+RuntimeError: dictionary changed size during iteration

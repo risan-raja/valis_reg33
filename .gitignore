@@ -24,3 +24,8 @@ pixel_classifier.pkl
 rf_trained.tar.gz
 aff_reg/transforms/*_affine.mat
 archive.tar.gz
+gray_corrected.tif
+nohup.out
+._gray_corrected.tif
+valis_process_s/BFIW_processed/._.DS_Store
+valis_process_s/BFIW_processed/.DS_Store
