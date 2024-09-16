@@ -35,3 +35,11 @@ features
 213_BFIW
 222_BFIW
 244_BFIW
+213_features.pkl
+213_transforms_common.pkl
+213_transforms_mask.pkl
+213_transforms.pkl
+retinex_bbox.avi
+rf_trained_pred/retinex/retinex.gif
+sitk_combined/registered_volume.nii.gz
+sitk_combined/transforms.pkl
