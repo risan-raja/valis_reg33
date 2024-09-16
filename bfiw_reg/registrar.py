@@ -6,21 +6,20 @@ from tqdm import tqdm
 from .utils import make_slide
 
 class BFIWReg:
-    def __init__(self, src_dir, dest_dir, ref_idx) -> None:
+    def __init__(self, src_dir, dest_dir, ref_idx, regex) -> None:
         self.src_dir = src_dir
         self.dest_dir = dest_dir
         self.ref_idx = ref_idx
         imgs = os.listdir(self.src_dir)
-        regex = re.compile(r".*-SE_(\d+)_original.jpg")
         imgs = sorted(imgs, key=lambda x: int(regex.match(x).group(1))) # type: ignore
-        imgs_ordered = {}
-        for img in imgs:
-            section_num = int(regex.match(img).group(1)) # type: ignore
-            section_id = str(section_num)
-            section_id_digits = len(section_id)
-            if section_id_digits < 4:
-                section_id = "0" * (4 - section_id_digits) + str(section_num)
-            imgs_ordered[section_id] = os.path.join(self.src_dir, img)
+        imgs_ordered = {regex.match(x).group(1).zfill(4): os.path.join(self.src_dir, x) for x in imgs} # type: ignore
+        # for img in imgs:
+        #     section_num = int(regex.match(img).group(1)) # type: ignore
+        #     section_id = str(section_num)
+        #     section_id_digits = len(section_id)
+        #     if section_id_digits < 4:
+        #         section_id = "0" * (4 - section_id_digits) + str(section_num)
+        #     imgs_ordered[section_id] = os.path.join(self.src_dir, img)
         self.imgs = imgs_ordered
         if ref_idx not in self.imgs:
             raise ValueError("Reference index not found in the image list")
