@@ -4,8 +4,8 @@ import cv2
 import scipy.ndimage as ndi
 
 
-def make_slide(slide_path, key=None, is_ref=False):
-    slide = BFIWSlide(slide_path, key, is_ref)
+def make_slide(bfiw_slide_path, bfi_slide_path, key=None, is_ref=False):
+    slide = BFIWSlide(bfiw_slide_path, bfi_slide_path, key, is_ref)
     return {key: slide}
 
 def neighbourhood_values(image, coords):
@@ -52,7 +52,7 @@ def predict_mask(slide: BFIWSlide, fil_model):
     top, bottom, left, right = 1, 1, 1, 1  # Example padding values
     border_type = cv2.BORDER_CONSTANT # type: ignore
     slide_mask = slide.mask
-    slide_img = slide.msr_img
+    slide_img = slide.msr_bfiw_img
     slide_img_p = cv2.copyMakeBorder(slide_img, top, bottom, left, right, border_type)  # type: ignore
     slide_img_center = np.array([slide_img.shape[0]//2, slide_img.shape[1]//2]) # type: ignore
     bfi_coords = np.argwhere(slide_mask) # type: ignore

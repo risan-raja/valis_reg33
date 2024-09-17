@@ -4,13 +4,17 @@ import ants
 from .retinex import msrcr
 
 class BFIWSlide:
-    def __init__(self, slide_path, key=None, is_ref=False):
-        self.slide_path = slide_path
+    def __init__(self, bfiw_slide_path, bfi_slide_path=None, key=None, is_ref=False):
+        self.slide_path = bfiw_slide_path
         self.key = key
-        self.img = cv2.imread(slide_path)
-        self.img = cv2.cvtColor(self.img, cv2.COLOR_BGR2RGB)
-        self.msr_img = None
-        self.msr_img_gray = None
+        self.bfiw_img = cv2.imread(bfiw_slide_path)
+        self.bfiw_img = cv2.cvtColor(self.bfiw_img, cv2.COLOR_BGR2RGB)
+        self.bfi_img = cv2.imread(bfi_slide_path)
+        self.bfi_img = cv2.cvtColor(self.bfi_img, cv2.COLOR_BGR2RGB)
+        self.msr_bfiw_img = None
+        self.msr_bfiw_img_gray = None
+        self.msr_bfi_img = None
+        self.msr_bfi_img_gray = None
         self.mask = None
         self.is_ref = is_ref
         self.apply_msrcr()
@@ -18,27 +22,38 @@ class BFIWSlide:
         self.apply_mask(self.mask)
 
     def apply_msrcr(self):
-        self.msr_img = msrcr(self.img)
-        self.msr_img_gray = cv2.cvtColor(self.msr_img, cv2.COLOR_RGB2GRAY) # type: ignore
+        self.msr_bfiw_img = msrcr(self.bfiw_img)
+        self.msr_bfiw_img_gray = cv2.cvtColor(self.msr_bfiw_img, cv2.COLOR_RGB2GRAY)
+        self.msr_bfi_img = msrcr(self.bfi_img)
+        self.msr_bfi_img_gray = cv2.cvtColor(self.msr_bfi_img, cv2.COLOR_RGB2GRAY) 
 
     def apply_mask(self, mask):
-        self.temp_img = (np.ones_like(self.img) * 255).astype(np.uint8) # type: ignore
-        self.temp_img[mask == 1] = self.img[mask == 1]
-        self.img = self.temp_img
-        self.temp_img = (np.ones_like(self.img) * 255).astype(np.uint8)
-        self.temp_img[mask == 1] = self.msr_img[mask == 1] # type: ignore
-        self.msr_img = self.temp_img
+        self.temp_img = (np.ones_like(self.bfiw_img) * 255).astype(np.uint8) # type: ignore
+        self.temp_img[mask == 1] = self.bfiw_img[mask == 1]
+        self.bfiw_img = self.temp_img
+        self.temp_img = (np.ones_like(self.bfiw_img) * 255).astype(np.uint8)
+        self.temp_img[mask == 1] = self.msr_bfiw_img[mask == 1] # type: ignore
+        self.msr_bfiw_img = self.temp_img
+        self.temp_img = (np.ones_like(self.bfi_img) * 255).astype(np.uint8)
+        self.temp_img[mask == 1] = self.bfi_img[mask == 1] # type: ignore
+        self.bfi_img = self.temp_img
+        self.temp_img = (np.ones_like(self.bfi_img) * 255).astype(np.uint8)
+        self.temp_img[mask == 1] = self.msr_bfi_img[mask == 1] # type: ignore
+        self.msr_bfi_img = self.temp_img
+
 
     def get_mask(self):
-        if self.msr_img_gray is None:
+        if self.msr_bfiw_img_gray is None:
             self.apply_msrcr()
-        sample_ants = ants.from_numpy(self.msr_img_gray)
+        sample_ants = ants.from_numpy(self.msr_bfiw_img_gray)
         self.mask = sample_ants.get_mask(cleanup=4).numpy().astype(np.uint8) # type: ignore
         # return self.mask
     
     def apply_crop(self, crop):
-        self.img = self.img[crop[0]:crop[1], crop[2]:crop[3]]
-        self.msr_img = self.msr_img[crop[0]:crop[1], crop[2]:crop[3]] # type: ignore
+        self.bfiw_img = self.bfiw_img[crop[0]:crop[1], crop[2]:crop[3]]
+        self.msr_bfiw_img = self.msr_bfiw_img[crop[0]:crop[1], crop[2]:crop[3]] # type: ignore
+        self.bfi_img = self.bfi_img[crop[0]:crop[1], crop[2]:crop[3]]
+        self.msr_bfi_img = self.msr_bfi_img[crop[0]:crop[1], crop[2]:crop[3]]
         self.mask = self.mask[crop[0]:crop[1], crop[2]:crop[3]] # type: ignore
     
     def get_block_contours(self):
