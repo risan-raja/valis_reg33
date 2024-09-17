@@ -45,3 +45,4 @@ sitk_combined/registered_volume.nii.gz
 sitk_combined/transforms.pkl
 ilastik-1.4.1b20-gpu-Linux.tar.1.bz2
 segmentation_masks.tar.xz
+*.h5
