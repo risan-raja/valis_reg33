@@ -48,3 +48,4 @@ segmentation_masks.tar.xz
 *.h5
 segmented_masks.tar.xz
 sitk_combined_213
+213_BFIW_aligned.tar.gz
