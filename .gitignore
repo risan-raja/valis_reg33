@@ -47,3 +47,4 @@ ilastik-1.4.1b20-gpu-Linux.tar.1.bz2
 segmentation_masks.tar.xz
 *.h5
 segmented_masks.tar.xz
+sitk_combined_213
